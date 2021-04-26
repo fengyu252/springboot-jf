@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- BEGIN HEAD -->
+
+<head th:replace="html/public :: #top_css_common">
+
+	<meta charset="utf-8" />
+
+	<title>任务管理系统</title>
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<meta content="" name="description" />
+
+	<meta content="" name="author" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<th:block th:replace="html/public :: css_top_common_from"/>
+
+<body class="page-header-fixed">
+
+	<!-- BEGIN HEADER -->
+
+	<div th:replace="html/public :: #top_dh_common">
+
+	</div>
+	<!-- END HEADER -->
+
+	<!-- BEGIN CONTAINER -->
+
+	<div class="page-container">
+
+		<!-- BEGIN SIDEBAR -->
+
+		<div th:replace="html/public :: #left_menu_common(activeOne='gn',activeTwo='file',activeThree='exlFile')">
+
+		</div>
+		<!-- END SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content">
+
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->
+				<!--填写头部信息-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN STYLE CUSTOMIZER -->
+
+<!--						<div th:replace="html/public :: #main_color_common"></div>-->
+						<!-- END BEGIN STYLE CUSTOMIZER -->
+
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+						<h3 class="page-title">
+
+							功能 <small>Exl上传</small>
+
+						</h3>
+
+						<ul class="breadcrumb">
+
+							<li>
+
+								<i class="icon-home"></i>
+
+								<a href="#">功能</a>
+
+								<i class="icon-angle-right"></i>
+
+							</li>
+
+							<li><a href="#" >Exl上传</a></li>
+
+
+						</ul>
+
+
+					</div>
+					<div class="row-fluid">
+
+						<div class="span12">
+
+							<!-- The file upload form used as target for the file upload widget -->
+
+							<form id="fileupload" action="#" th:action="@{/fileUpload/exlUpload}" method="POST" enctype="multipart/form-data">
+
+								<!-- Redirect browsers with JavaScript disabled to the origin page -->
+
+								<noscript><input type="hidden" name="redirect" value="http://blueimp.github.com/jQuery-File-Upload/"></noscript>
+
+								<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+
+								<div class="row-fluid fileupload-buttonbar">
+
+									<div class="span7">
+
+										<!-- The fileinput-button span is used to style the file input field as button -->
+
+										<span class="btn green fileinput-button">
+
+									<i class="icon-plus icon-white"></i>
+
+									<span>添加文件</span>
+
+									<input type="file" name="file">
+
+									</span>
+
+										<button type="submit" class="btn blue start">
+
+											<i class="icon-upload icon-white"></i>
+
+											<span>开始上传</span>
+
+										</button>
+
+										<button type="reset" class="btn yellow cancel">
+
+											<i class="icon-ban-circle icon-white"></i>
+
+											<span>关闭</span>
+
+										</button>
+
+										<button type="button" class="btn red delete">
+
+											<i class="icon-trash icon-white"></i>
+
+											<span>删除</span>
+
+										</button>
+
+										<input type="checkbox" class="toggle fileupload-toggle-checkbox">
+
+									</div>
+
+									<!-- The global progress information -->
+
+									<div class="span5 fileupload-progress fade">
+
+										<!-- The global progress bar -->
+
+										<div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+
+											<div class="bar" style="width:0%;"></div>
+
+										</div>
+
+										<!-- The extended global progress information -->
+
+										<div class="progress-extended">&nbsp;</div>
+
+									</div>
+
+								</div>
+
+								<!-- The loading indicator is shown during file processing -->
+
+								<div class="fileupload-loading"></div>
+
+								<br>
+
+								<!-- The table listing the files available for upload/download -->
+
+								<table role="presentation" class="table table-striped">
+
+									<tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+
+								</table>
+
+							</form>
+
+
+
+
+
+						</div>
+
+					</div>
+
+
+			<!-- END PAGE CONTAINER-->
+
+		<!-- END PAGE -->
+
+	</div>
+			</div>
+		</div>
+	</div>
+	<!-- END CONTAINER -->
+
+	<!-- BEGIN FOOTER -->
+	<div th:replace="html/public :: #down_dh_common"></div>
+
+
+	<div th:replace="html/public :: #js_down_common"></div>
+	<!-- END CORE PLUGINS -->
+
+	<th:block th:replace="html/public :: js_down_common_from"/>
+
+
+	<script src="media/js/app.js" th:src="@{/media/js/app.js}"></script>
+
+	<script>
+
+		jQuery(document).ready(function() {
+
+			// initiate layout and plugins
+
+			App.init();
+
+			//FormFileUpload.init();
+
+		});
+
+
+	</script>
+
+
+
+</body>
+
+<!-- END BODY -->
+
+</html>

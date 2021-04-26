@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhouwei.springboot.mapper.SjStoryMapper">
+
+  <insert id="addSjStory" parameterType="com.zhouwei.springboot.entity.SjStory">
+    insert into sj_story (names,contents,type,r1,imgUrl,res,xq,ltype,r2,r3)
+    values(#{names,jdbcType=VARCHAR},#{contents,jdbcType=VARCHAR},
+    #{type,jdbcType=INTEGER},#{r1,jdbcType=VARCHAR},#{imgUrl,jdbcType=VARCHAR}
+    ,#{res,jdbcType=VARCHAR},#{xq,jdbcType=VARCHAR},#{ltype,jdbcType=INTEGER}
+    ,#{r2,jdbcType=VARCHAR},#{r3,jdbcType=VARCHAR}
+    )
+
+  </insert>
+
+  <select id="findImgUrl" parameterType="java.util.Map" resultType="com.zhouwei.springboot.entity.SjStory">
+    select id,names,contents,type,imgUrl,res,xq,ltype,r1,r2,r3
+    from sj_story where names like '${name}%' and type=1000 and r2 is null and ltype=#{ltype}
+  </select>
+
+  <update id="updateImgUrlR2" parameterType="java.util.Map">
+    update sj_story set r2="1" where id=#{id}
+  </update>
+
+</mapper>

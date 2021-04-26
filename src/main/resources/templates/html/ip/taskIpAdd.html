@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- BEGIN HEAD -->
+
+<head th:replace="html/public :: #top_css_common">
+
+	<meta charset="utf-8" />
+
+	<title>任务管理系统</title>
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<meta content="" name="description" />
+
+	<meta content="" name="author" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<th:block th:replace="html/public :: css_top_common_from"/>
+<body class="page-header-fixed">
+
+	<!-- BEGIN HEADER -->
+
+	<div th:replace="html/public :: #top_dh_common">
+
+	</div>
+	<!-- END HEADER -->
+    
+	<!-- BEGIN CONTAINER -->
+
+	<div class="page-container">
+
+		<!-- BEGIN SIDEBAR -->
+
+		<div th:replace="html/public :: #left_menu_common(activeOne='gn',activeTwo='ip',activeThree='ipAdd')">
+
+		</div>
+		<!-- END SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content">
+
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			
+
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			<!-- BEGIN PAGE CONTAINER-->
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->
+				<!--填写头部信息-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN STYLE CUSTOMIZER -->
+
+<!--						<div th:replace="html/public :: #main_color_common"></div>-->
+						<!-- END BEGIN STYLE CUSTOMIZER -->    
+
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+						<h3 class="page-title">
+
+							IP <small>添加</small>
+
+						</h3>
+
+						<ul class="breadcrumb">
+
+							<li>
+
+								<i class="icon-home"></i>
+
+								<a href="index.html">IP</a>
+
+								<i class="icon-angle-right"></i>
+
+							</li>
+
+							<li><a href="#" >添加</a></li>
+
+							
+						</ul>
+
+						
+					</div>
+
+				</div>
+
+				
+				
+			</div>
+
+			<!-- END PAGE CONTAINER-->
+			<div class="row-fluid">
+				<div class="span12">
+			<!-- 可以编写其他信息-->
+
+					<div class="portlet box blue">
+
+						<div class="portlet-title">
+
+							<div class="caption"><i class="icon-reorder"></i>IP添加</div>
+
+							<div class="tools">
+
+								<a href="javascript:;" class="collapse"></a>
+
+								<a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+								<a href="javascript:;" class="reload"></a>
+
+								<a href="javascript:;" class="remove"></a>
+
+							</div>
+
+						</div>
+
+						<div class="portlet-body form">
+
+							<!-- BEGIN FORM-->
+
+							<form action="#" class="form-horizontal" method="post" th:action="@{/webAdmin/addIpSource}" >
+								<div class="control-group">
+
+									<label class="control-label">IP源</label>
+
+									<div class="controls">
+
+										<input type="text" id="msg" value="" name="msg" class="span6 m-wrap" />
+
+										<span class="help-inline">IP源备注信息</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">账号</label>
+
+									<div class="controls">
+
+										<input type="text" id="name" value="" name="name"  class="span6 m-wrap" />
+
+										<span class="help-inline">账号</span>
+
+									</div>
+
+								</div>
+
+								<div class="control-group">
+
+									<label class="control-label">密码:</label>
+
+									<div class="controls">
+
+										<input type="text" id="pass"  name="pass" class="span6 m-wrap" />
+										<span class="help-inline">密码</span>
+									</div>
+
+								</div>
+								<div class="control-group">
+									<label class="control-label">类型:</label>
+									<div class="controls">
+										<select class="span6 m-wrap" id="type"  name="type" data-placeholder="Choose a Category" tabindex="1">
+											<option value="1" >豌豆</option>
+											<option value="2" >蜻蜓</option>
+											<option value="3" >太阳</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">URL:</label>
+									<div class="controls">
+										<textarea class="span6 m-wrap" row="8" name="url" id="url"></textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">状态:</label>
+									<div class="controls">
+										<select class="span6 m-wrap" id="states"  name="states" data-placeholder="Choose a Category" tabindex="1">
+											<option value="0" >可用</option>
+											<option value="1" >禁用</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">HTTP类型:</label>
+									<div class="controls">
+										<select class="span6 m-wrap" id="r1"  name="r1" data-placeholder="Choose a Category" tabindex="1">
+											<option value="0" >Socks5</option>
+											<option value="1" >HTTP</option>
+											<option value="2" >HTTPS</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-actions">
+
+									<button type="submit" class="btn blue" onclick="fz()">提交</button>
+
+									<button type="button" class="btn" onclick="history.back(-1)">关闭</button>
+
+								</div>
+
+							</form>
+
+							<!-- END FORM-->
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE -->
+
+	</div>
+
+	<!-- END CONTAINER -->
+
+	<!-- BEGIN FOOTER -->
+	<div th:replace="html/public :: #down_dh_common"></div>
+
+
+	<div th:replace="html/public :: #js_down_common">
+
+	</div>
+	<!-- END CORE PLUGINS -->
+
+	<th:block th:replace="html/public :: js_down_common_from"/>
+
+
+
+	<script src="media/js/app.js" type="text/javascript" th:src="@{/media/js/app.js}"></script>
+	<script src="media/js/form-components.js" th:src="@{/media/js/form-components.js}"></script>
+<!--	<script src="media/js/table-advanced.js" th:src="@{/media/js/table-advanced.js}"></script>-->
+	<script>
+
+		jQuery(document).ready(function() {    
+
+		   App.init(); // initlayout and core plugins
+			 FormComponents.init();
+		   // Index.init();
+
+		   // Index.initJQVMAP(); // init index page's custom scripts
+		   //
+		   // Index.initCalendar(); // init index page's custom scripts
+		   //
+		   // Index.initCharts(); // init index page's custom scripts
+		   //
+		   // Index.initChat();
+		   //
+		   // Index.initMiniCharts();
+		   //
+		   // Index.initDashboardDaterange();
+		   //
+		   // Index.initIntro();
+
+		});
+		function fz(){
+			//var z=$("#type").find("option:selected").text();
+			//$("#r5").val(z)
+			$("#addFrom").submit();
+		}
+	</script>
+
+	<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

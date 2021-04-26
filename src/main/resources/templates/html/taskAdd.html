@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- BEGIN HEAD -->
+
+<head th:replace="html/public :: #top_css_common">
+
+	<meta charset="utf-8" />
+
+	<title>任务管理系统</title>
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<meta content="" name="description" />
+
+	<meta content="" name="author" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<th:block th:replace="html/public :: css_top_common_from"/>
+<body class="page-header-fixed">
+
+	<!-- BEGIN HEADER -->
+
+	<div th:replace="html/public :: #top_dh_common">
+
+	</div>
+	<!-- END HEADER -->
+    
+	<!-- BEGIN CONTAINER -->
+
+	<div class="page-container">
+
+		<!-- BEGIN SIDEBAR -->
+
+		<div th:replace="html/public :: #left_menu_common(activeOne='task',activeTwo='addTask',activeThree='')">
+
+		</div>
+		<!-- END SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content">
+
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			
+
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			<!-- BEGIN PAGE CONTAINER-->
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->
+				<!--填写头部信息-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN STYLE CUSTOMIZER -->
+
+<!--						<div th:replace="html/public :: #main_color_common"></div>-->
+						<!-- END BEGIN STYLE CUSTOMIZER -->    
+
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+						<h3 class="page-title">
+
+							任务 <small>任务添加</small>
+
+						</h3>
+
+						<ul class="breadcrumb">
+
+							<li>
+
+								<i class="icon-home"></i>
+
+								<a href="index.html">任务</a>
+
+								<i class="icon-angle-right"></i>
+
+							</li>
+
+							<li><a href="#" th:href="@{/webAdmin/goTaskTable}">添加任务</a></li>
+
+							
+						</ul>
+
+						
+					</div>
+
+				</div>
+
+				
+				
+			</div>
+
+			<!-- END PAGE CONTAINER-->
+			<div class="row-fluid">
+				<div class="span12">
+			<!-- 可以编写其他信息-->
+
+					<div class="portlet box blue">
+
+						<div class="portlet-title">
+
+							<div class="caption"><i class="icon-reorder"></i>任务添加</div>
+
+							<div class="tools">
+
+								<a href="javascript:;" class="collapse"></a>
+
+								<a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+								<a href="javascript:;" class="reload"></a>
+
+								<a href="javascript:;" class="remove"></a>
+
+							</div>
+
+						</div>
+
+						<div class="portlet-body form">
+
+							<!-- BEGIN FORM-->
+
+							<form action="#" class="form-horizontal" method="post" th:action="@{/webAdmin/taskAddMess}">
+
+								<div class="control-group">
+
+									<label class="control-label">BUNID</label>
+
+									<div class="controls">
+
+										<input type="text" id="bundleid" th:value="${sjTask?.bundleid}" name="bundleid"  class="span6 m-wrap" />
+
+										<span class="help-inline">appBUNID</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">昵称</label>
+
+									<div class="controls">
+
+										<input type="text" id="names" th:value="${sjTask?.names}" name="names" class="span6 m-wrap" />
+
+										<span class="help-inline">应用昵称</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">渠道类型:</label>
+
+									<div class="controls">
+
+										<select class="span6 m-wrap"  id="type" name="type"  data-placeholder="Choose a Category" tabindex="1">
+
+
+
+											<option value="30" th:selected="${sjTask?.type == 30}">小极红包</option>
+
+											<option value="101" th:selected="${sjTask?.type == 101}">其他</option>
+
+
+										</select>
+										<div style="display: none;">
+											<input name="r5" id="r5" th:value="${sjTask?.r5}">
+											</iv>
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">渠道:</label>
+
+									<div class="controls">
+
+										<input type="text" id="qd" th:value="${sjTask?.qd}" name="qd" class="span6 m-wrap" />
+
+										<span class="help-inline"></span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">实际数量:</label>
+
+									<div class="controls">
+
+										<input type="text" id="sjnumber" value="0" th:value="${sjTask?.sjnumber}"  name="sjnumber" class="span6 m-wrap" />
+
+										<span class="help-inline">实际跑的数量统计运用</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">任务数量:</label>
+
+									<div class="controls">
+
+										<input type="text" id="number" value="0" th:value="${sjTask?.number}" name="number"  class="span6 m-wrap" />
+
+										<span class="help-inline">实际任务跑的数量</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">任务时间:</label>
+
+									<div class="controls">
+
+										<input type="text" id="tasktime" value="0" th:value="${sjTask?.tasktime}" name="tasktime" class="span6 m-wrap" />
+
+										<span class="help-inline">应用打开APP的时间</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">AppStoreId:</label>
+
+									<div class="controls">
+
+										<input type="text" id="appstoreid" th:value="${sjTask?.appstoreid}" name="appstoreid" class="span6 m-wrap" />
+
+										<span class="help-inline">AppStoreId</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">客户ID:</label>
+
+									<div class="controls">
+
+										<input type="text" id="cusid" th:value="${sjTask?.cusid}" name="cusid" class="span6 m-wrap" />
+
+										<span class="help-inline">客户ID</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">OrderId:</label>
+
+									<div class="controls">
+
+										<input type="text" id="appurl"   name="appurl"  class="span6 m-wrap" />
+
+										<span class="help-inline">OrderId 每个任务都不一样</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">任务状态:</label>
+
+									<div class="controls">
+
+										<select class="span6 m-wrap" id="r3"  name="r3" data-placeholder="Choose a Category" tabindex="1">
+
+
+
+											<option value="0" th:selected="${sjTask?.r3 eq '0'}">正式</option>
+
+											<option value="1" th:selected="${sjTask?.r3 eq '1'}">测试</option>
+
+
+										</select>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">任务类型:</label>
+
+									<div class="controls">
+
+										<select class="span6 m-wrap" id="tasktype"  name="tasktype" data-placeholder="Choose a Category" tabindex="1">
+
+
+
+											<option value="0" th:selected="${sjTask?.tasktype == 0}">快速</option>
+
+											<option value="1" th:selected="${sjTask?.tasktype == 1}">回调</option>
+
+
+										</select>
+
+									</div>
+
+								</div>
+								<div class="form-actions">
+
+									<button type="submit" class="btn blue" onclick="fz()">提交</button>
+
+									<button type="button" class="btn" onclick="history.back(-1)">关闭</button>
+
+								</div>
+
+							</form>
+
+							<!-- END FORM-->
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE -->
+
+	</div>
+
+	<!-- END CONTAINER -->
+
+	<!-- BEGIN FOOTER -->
+	<div th:replace="html/public :: #down_dh_common"></div>
+
+
+	<div th:replace="html/public :: #js_down_common">
+
+	</div>
+	<!-- END CORE PLUGINS -->
+
+	<th:block th:replace="html/public :: js_down_common_from"/>
+
+
+
+	<script src="media/js/app.js" type="text/javascript" th:src="@{/media/js/app.js}"></script>
+	<script src="media/js/form-components.js" th:src="@{/media/js/form-components.js}"></script>
+<!--	<script src="media/js/table-advanced.js" th:src="@{/media/js/table-advanced.js}"></script>-->
+	<script>
+
+		jQuery(document).ready(function() {    
+
+		   App.init(); // initlayout and core plugins
+			 FormComponents.init();
+		   // Index.init();
+
+		   // Index.initJQVMAP(); // init index page's custom scripts
+		   //
+		   // Index.initCalendar(); // init index page's custom scripts
+		   //
+		   // Index.initCharts(); // init index page's custom scripts
+		   //
+		   // Index.initChat();
+		   //
+		   // Index.initMiniCharts();
+		   //
+		   // Index.initDashboardDaterange();
+		   //
+		   // Index.initIntro();
+
+		});
+		function fz(){
+			var z=$("#type").find("option:selected").text();
+			$("#r5").val(z)
+			$("#addFrom").submit();
+		}
+	</script>
+
+	<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

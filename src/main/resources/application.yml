@@ -1,0 +1,67 @@
+# 项目端口号
+server:
+  port: 80
+spring:
+  application:
+    name: springboot-jf # 应用项目名称
+  profiles:
+    active: dev  # 激活环境 dev 开发环境  prod 生产环境
+# 上传文件总的最大值
+#  servlet:
+#    multipart:
+#      max-file-size: 10MB   #单个文件的最大值
+#      max-request-size: 30MB  #上传文件总的最大值
+  datasource:
+    #数据源配置
+    username: root
+    password: 93482030mission813
+    url: jdbc:mysql://47.108.93.153/sjsj?serverTimezone=GMT%2B8
+    #8.0 上的驱动包
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 指定数据源类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 配置数据druid源
+    # 数据源其他配置, DataSourceProperties中没有相关属性,默认无法绑定
+    initialSize: 8
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,slf4j #slf4j logback
+    maxPoolPreparedStatementPerConnectionSize: 25
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+  # redis 配置
+  redis:
+    host: 47.108.93.153
+    port: 6379
+    password: 666666
+  # 关闭thymeleaf 缓存
+  thymeleaf:
+    cache: false
+  # 开启springmvc hidden 控制器 支持DeleteMapping 支持web中put提交方式
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+    async:
+      request-timeout: 30000 #设置接口超时时间 30s
+#mybatis 相关配置
+mybatis:
+  # 映射地址
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  # 核心型配置
+  config-location:  classpath:mybatis/mybatis-config.xml
+# 启动mybatis: sql 语句在控制台出现 日子级别
+logging:
+  level:
+    com.zhouwei.springboot.mapper: debug
+  config: classpath:logback-spring.xml

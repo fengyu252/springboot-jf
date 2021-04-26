@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- BEGIN HEAD -->
+
+<head th:replace="html/public :: #top_css_common">
+
+	<meta charset="utf-8" />
+
+	<title>任务管理系统</title>
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<meta content="" name="description" />
+
+	<meta content="" name="author" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<th:block th:replace="html/public :: css_top_common_from"/>
+<body class="page-header-fixed">
+
+	<!-- BEGIN HEADER -->
+
+	<div th:replace="html/public :: #top_dh_common">
+
+	</div>
+	<!-- END HEADER -->
+    
+	<!-- BEGIN CONTAINER -->
+
+	<div class="page-container">
+
+		<!-- BEGIN SIDEBAR -->
+
+		<div th:replace="html/public :: #left_menu_common(activeOne='gjc',activeTwo='addGjcUp',activeThree='')">
+
+		</div>
+		<!-- END SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content">
+
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			
+
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			<!-- BEGIN PAGE CONTAINER-->
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->
+				<!--填写头部信息-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN STYLE CUSTOMIZER -->
+
+<!--						<div th:replace="html/public :: #main_color_common"></div>-->
+						<!-- END BEGIN STYLE CUSTOMIZER -->    
+
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+						<h3 class="page-title">
+
+							关键词 <small>修改</small>
+
+						</h3>
+
+						<ul class="breadcrumb">
+
+							<li>
+
+								<i class="icon-home"></i>
+
+								<a href="index.html">关键词</a>
+
+								<i class="icon-angle-right"></i>
+
+							</li>
+
+							<li><a href="#" >修改</a></li>
+
+							
+						</ul>
+
+						
+					</div>
+
+				</div>
+
+				
+				
+			</div>
+
+			<!-- END PAGE CONTAINER-->
+			<div class="row-fluid">
+				<div class="span12">
+			<!-- 可以编写其他信息-->
+
+					<div class="portlet box blue">
+
+						<div class="portlet-title">
+
+							<div class="caption"><i class="icon-reorder"></i>关键词修改</div>
+
+							<div class="tools">
+
+								<a href="javascript:;" class="collapse"></a>
+
+								<a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+								<a href="javascript:;" class="reload"></a>
+
+								<a href="javascript:;" class="remove"></a>
+
+							</div>
+
+						</div>
+
+						<div class="portlet-body form">
+
+							<!-- BEGIN FORM-->
+
+							<form action="#" class="form-horizontal" method="post" th:action="@{/webAdmin/updateGjc}" >
+								<input type="hidden" name="_method" value="put"/>
+								<input type="hidden" name="id" id="id" th:value="${gjc?.id}"/>
+								<div class="control-group">
+
+									<label class="control-label">任务ID</label>
+
+									<div class="controls">
+
+										<input type="text" id="taskid"  name="taskid" th:value="${gjc?.taskid}"  class="span6 m-wrap" />
+
+										<span class="help-inline">任务ID</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">关键词</label>
+
+									<div class="controls">
+
+										<input type="text" id="gjc" name="gjc" th:value="${gjc?.gjc}" class="span6 m-wrap" />
+
+										<span class="help-inline">关键词</span>
+
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">实际数量:</label>
+
+									<div class="controls">
+
+										<input type="text" id="sjnumber" value="0" th:value="${gjc?.sjnumber}" name="sjnumber" class="span6 m-wrap" />
+										<span class="help-inline">实际任务的数量</span>
+									</div>
+
+								</div>
+								<div class="control-group">
+
+									<label class="control-label">数量:</label>
+
+									<div class="controls">
+
+										<input type="text" id="xnumber" value="0" th:value="${gjc?.xnumber}" name="xnumber" class="span6 m-wrap" />
+
+										<span class="help-inline">任务的数量</span>
+
+									</div>
+
+								</div>
+
+								<div class="form-actions">
+
+									<button type="submit" class="btn blue" onclick="fz()">提交</button>
+
+									<button type="button" class="btn" onclick="history.back(-1)">关闭</button>
+
+								</div>
+
+							</form>
+
+							<!-- END FORM-->
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE -->
+
+	</div>
+
+	<!-- END CONTAINER -->
+
+	<!-- BEGIN FOOTER -->
+	<div th:replace="html/public :: #down_dh_common"></div>
+
+
+	<div th:replace="html/public :: #js_down_common">
+
+	</div>
+	<!-- END CORE PLUGINS -->
+
+	<th:block th:replace="html/public :: js_down_common_from"/>
+
+
+
+	<script src="media/js/app.js" type="text/javascript" th:src="@{/media/js/app.js}"></script>
+	<script src="media/js/form-components.js" th:src="@{/media/js/form-components.js}"></script>
+<!--	<script src="media/js/table-advanced.js" th:src="@{/media/js/table-advanced.js}"></script>-->
+	<script>
+
+		jQuery(document).ready(function() {    
+
+		   App.init(); // initlayout and core plugins
+			 FormComponents.init();
+		   // Index.init();
+
+		   // Index.initJQVMAP(); // init index page's custom scripts
+		   //
+		   // Index.initCalendar(); // init index page's custom scripts
+		   //
+		   // Index.initCharts(); // init index page's custom scripts
+		   //
+		   // Index.initChat();
+		   //
+		   // Index.initMiniCharts();
+		   //
+		   // Index.initDashboardDaterange();
+		   //
+		   // Index.initIntro();
+
+		});
+		function fz(){
+			//var z=$("#type").find("option:selected").text();
+			var gjc=$("#gjc").val(z)
+			if(gjc==null || gjc=="" || gjc=='undefined'){
+				alert("关键词为空");
+			}else {
+				$("#addFrom").submit();
+			}
+		}
+	</script>
+
+	<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

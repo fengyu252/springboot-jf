@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- BEGIN HEAD -->
+
+<head th:replace="html/public :: #top_css_common">
+
+	<meta charset="utf-8" />
+
+	<title>任务管理系统</title>
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<meta content="" name="description" />
+
+	<meta content="" name="author" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+	<!-- BEGIN HEADER -->
+
+	<div th:replace="html/public :: #top_dh_common">
+
+	</div>
+	<!-- END HEADER -->
+    
+	<!-- BEGIN CONTAINER -->
+
+	<div class="page-container">
+
+		<!-- BEGIN SIDEBAR -->
+
+		<div th:replace="html/public :: #left_menu_common(activeOne='task',activeTwo='tableDetail',activeThree='')">
+
+		</div>
+		<!-- END SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content">
+
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			
+
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			<!-- BEGIN PAGE CONTAINER-->
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->
+				<!--填写头部信息-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN STYLE CUSTOMIZER -->
+
+<!--						<div th:replace="html/public :: #main_color_common"></div>-->
+						<!-- END BEGIN STYLE CUSTOMIZER -->    
+
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+						<h3 class="page-title">
+
+							任务 <small>任务详情</small>
+
+						</h3>
+
+						<ul class="breadcrumb">
+
+							<li>
+
+								<i class="icon-home"></i>
+
+								<a href="index.html">任务</a>
+
+								<i class="icon-angle-right"></i>
+
+							</li>
+
+							<li><a href="#">任务详情</a></li>
+
+							
+						</ul>
+
+						
+					</div>
+
+				</div>
+
+				
+				
+			</div>
+
+			<!-- END PAGE CONTAINER-->
+			<div class="row-fluid">
+				<div class="span12">
+			<!-- 可以编写其他信息 style="width: 96%;padding-left: 15px;"-->
+				<div class="portlet box blue">
+
+					<div class="portlet-title">
+
+						<div class="caption"><i class="icon-cogs"></i>任务详情
+
+						</div>
+
+						<div class="actions">
+
+
+							<a href="#" class="btn green"><i class="icon-plus"></i> Add</a>
+
+							<a href="#" class="btn yellow"><i class="icon-print"></i> Print</a>
+
+						</div>
+
+					</div>
+				<div class="portlet-body">
+
+					<table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
+
+						<thead>
+
+						<tr>
+<!--							<th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes" /></th>-->
+
+							<th>IDFA</th>
+							<th>时间</th>
+							<th style="width:8px">任务ID</th>
+							<th>IP</th>
+							<th>BundlId</th>
+							<th>昵称</th>
+							<th style="width:8px">客户ID</th>
+							<th style="width:8px">model</th>
+							<th style="width:8px">oss</th>
+							<th>关键词</th>
+							<th>回调时间</th>
+
+
+
+						</tr>
+
+						</thead>
+
+						<tbody>
+
+						<tr class="odd gradeX" th:each="task : ${sjDetail}">
+							<td th:text="${task?.idfa}">12</td>
+							<td th:text="${task?.changtime}">58同城（55）</td>
+							<td th:text="${task?.taskid}">小极红包</td>
+							<td th:text="${task?.ip}">cd</td>
+							<td th:text="${task?.bundleid}">回调</td>
+							<td th:text="${task?.names}">55</td>
+							<td th:text="${task?.cusid}">55</td>
+							<td th:text="${task?.model}">55</td>
+							<td th:text="${task?.oss}">55</td>
+							<td th:text="${task?.r1}">正式</td>
+							<td th:text="${task?.callbacktime}">0</td>
+
+						</tr>
+
+						</tbody>
+
+					</table>
+
+				</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+		</div>
+		<!-- END PAGE -->
+
+	</div>
+
+	<!-- END CONTAINER -->
+
+	<!-- BEGIN FOOTER -->
+	<div th:replace="html/public :: #down_dh_common"></div>
+
+
+	<div th:replace="html/public :: #js_down_common">
+
+	</div>
+	<!-- END CORE PLUGINS -->
+
+	<script type="text/javascript" src="media/js/select2.min.js" th:src="@{/media/js/select2.min.js}"></script>
+
+	<script type="text/javascript" src="media/js/jquery.dataTables.js" th:src="@{/media/js/jquery.dataTables.js}"></script>
+
+	<script type="text/javascript" src="media/js/DT_bootstrap.js" th:src="@{/media/js/DT_bootstrap.js}"></script>
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="media/js/app.js" type="text/javascript" th:src="@{/media/js/app.js}"></script>
+
+	<script src="media/js/table-advanced.js" th:src="@{/media/js/table-advanced.js}"></script>
+	<script>
+
+		jQuery(document).ready(function() {    
+
+		   App.init(); // initlayout and core plugins
+			TableAdvanced.init();
+		   // Index.init();
+		   //
+		   // Index.initJQVMAP(); // init index page's custom scripts
+
+		   //Index.initCalendar(); // init index page's custom scripts
+
+		  // Index.initCharts(); // init index page's custom scripts
+
+		  // Index.initChat();
+
+		  // Index.initMiniCharts();
+
+		   // Index.initDashboardDaterange();
+
+		   // Index.initIntro();
+
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

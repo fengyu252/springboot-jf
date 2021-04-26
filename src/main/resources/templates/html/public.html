@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--head 中引用-->
+
+<head  id="top_css_common">
+    <meta charset="utf-8" />
+
+    <title>任务管理系统</title>
+
+    <link href="media/css/bootstrap.min.css" th:href="@{/media/css/bootstrap.min.css}"  rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" th:href="@{/media/css/bootstrap-responsive.min.css}" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" th:href="@{/media/css/font-awesome.min.css}" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" th:href="@{/media/css/style-metro.css}" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" th:href="@{/media/css/style.css}" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" th:href="@{/media/css/style-responsive.css}" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/default.css" th:href="@{/media/css/default.css}" rel="stylesheet" type="text/css" id="style_color"/>
+
+    <link href="media/css/uniform.default.css" th:href="@{/media/css/uniform.default.css}" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+<!--    <link href="media/css/jquery.gritter.css" th:href="@{/media/css/jquery.gritter.css}" rel="stylesheet" type="text/css"/>-->
+
+<!--    <link href="media/css/daterangepicker.css" th:href="@{/media/css/daterangepicker.css}" rel="stylesheet" type="text/css" />-->
+
+<!--    <link href="media/css/fullcalendar.css" th:href="@{/media/css/fullcalendar.css}" rel="stylesheet" type="text/css"/>-->
+
+<!--    <link href="media/css/jqvmap.css"  th:href="@{/media/css/jqvmap.css}" rel="stylesheet" type="text/css" media="screen"/>-->
+
+<!--    <link href="media/css/jquery.easy-pie-chart.css" th:href="@{/media/css/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen"/>-->
+
+    <!-- END PAGE LEVEL STYLES -->
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" th:href="@{/media/css/select2_metro.css}"/>
+
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css" th:href="@{/media/css/DT_bootstrap.css}"/>
+
+    <link rel="shortcut icon" href="media/image/favicon.ico" th:href="@{/media/image/favicon.ico}"/>
+
+
+</head>
+<body>
+
+
+    <!--头部导航 中引用-->
+    <div id="top_dh_common" class="header navbar navbar-inverse navbar-fixed-top">
+
+        <!-- BEGIN TOP NAVIGATION BAR -->
+
+        <div class="navbar-inner">
+
+            <div class="container-fluid">
+
+                <!-- BEGIN LOGO -->
+
+                <a class="brand" href="index.html">
+
+                    <img src="media/image/logo.png" th:src="@{/media/image/logo.png}"  alt="logo"/>
+
+                </a>
+
+                <!-- END LOGO -->
+
+
+                <!-- BEGIN TOP NAVIGATION MENU -->
+
+                <ul class="nav pull-right">
+
+
+                    <!-- BEGIN USER LOGIN DROPDOWN -->
+
+                    <li class="dropdown user">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                            <img alt="" src="media/image/avatar1_small.jpg" th:src="@{/media/image/avatar1_small.jpg}" />
+
+                            <span class="username">周伟</span>
+
+                            <i class="icon-angle-down"></i>
+
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li><a href="extra_profile.html"><i class="icon-user"></i> 个人中心</a></li>
+
+                            <li><a href="page_calendar.html"><i class="icon-calendar"></i> 日历</a></li>
+
+                            <li><a href="inbox.html"><i class="icon-envelope"></i>收藏</a></li>
+
+                            <li><a href="#"><i class="icon-tasks"></i> 任务</a></li>
+
+                            <li class="divider"></li>
+
+                            <li><a href="extra_lock.html"><i class="icon-lock"></i> 锁屏</a></li>
+
+                            <li><a href="login.html"><i class="icon-key"></i> 退出</a></li>
+
+                        </ul>
+
+                    </li>
+
+                    <!-- END USER LOGIN DROPDOWN -->
+
+                </ul>
+
+                <!-- END TOP NAVIGATION MENU -->
+
+            </div>
+
+        </div>
+
+        <!-- END TOP NAVIGATION BAR -->
+
+    </div>
+
+    <!--左侧菜单 中引用-->
+    <div id="left_menu_common" class="page-sidebar nav-collapse collapse">
+
+        <!-- BEGIN SIDEBAR MENU -->
+
+        <ul class="page-sidebar-menu">
+
+            <li>
+
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+                <div class="sidebar-toggler hidden-phone"></div>
+
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+            </li>
+
+            <li>
+
+                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+
+                <form class="sidebar-search">
+
+                    <div class="input-box">
+
+                        <a href="#" class="remove"></a>
+
+                        <input type="text" placeholder="Search..." />
+
+                        <input type="button" class="submit" value=" " />
+
+                    </div>
+
+                </form>
+
+                <!-- END RESPONSIVE QUICK SEARCH FORM -->
+
+            </li>
+
+            <li class="" th:class="${activeOne == 'main' ? 'start active' : ''}">
+
+                <a href="#" th:href="@{/webAdmin/goIndex}">
+
+                    <i class="icon-home"></i>
+
+                    <span class="title">主页</span>
+
+                    <span  th:class="${activeOne == 'main' ? 'selected' : ''}"></span>
+
+                </a>
+
+            </li>
+
+            <li class="" th:class="${activeOne == 'task' ? 'active' : ''}">
+
+                <a href="javascript:;">
+
+                    <i class="icon-cogs"></i>
+
+                    <span class="title">任务</span>
+                    <span th:class="${activeOne == 'task' ? 'selected' : ''}"></span>
+
+                    <span th:class="${activeOne == 'task' ? 'arrow open' : ''}"></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li th:class="${activeTwo == 'nowDay' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goTaskTable}">
+
+                            当日任务</a>
+
+                    </li>
+                    <li th:class="${activeTwo == 'addTask' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goTableAdd}">
+
+                            添加任务</a>
+
+                    </li>
+                    <li th:class="${activeTwo == 'tableUpdate' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goTaskUpdate/0}">
+
+                            修改任务</a>
+
+                    </li>
+                    <li th:class="${activeTwo == 'tableDetail' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goTaskDetail/0/0/0/0}">
+
+                           任务详情</a>
+
+                    </li>
+                    <li th:class="${activeTwo == 'tableAdmin' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goTableAdmin}">
+
+                            任务管理</a>
+
+                    </li>
+                    <li th:class="${activeTwo == 'tableHistory' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goTableHistory/1}">
+
+                            历史任务</a>
+
+                    </li>
+
+
+                </ul>
+
+            </li>
+            <li class="" th:class="${activeOne == 'gjc' ? 'active' : ''}">
+
+                <a href="javascript:;">
+
+                    <i class="icon-table"></i>
+
+                    <span class="title">关键词</span>
+
+                    <span th:class="${activeOne == 'gjc' ? 'selected' : ''}"></span>
+
+                    <span th:class="${activeOne == 'gjc' ? 'arrow open' : ''}"></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li th:class="${activeTwo == 'gjcTable' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goGjcTable/0}">
+
+                            关键词</a>
+
+                    </li>
+
+                    <li th:class="${activeTwo == 'addGjc' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goGjcAdd}">
+
+                            添加关键词</a>
+
+                    </li>
+                    <li th:class="${activeTwo == 'addGjcUp' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goUpdateGjc/0/0}">
+
+                            修改关键词</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="" th:class="${activeOne == 'iphone' ? 'active' : ''}">
+
+                <a href="javascript:;">
+
+                    <i class="icon-table"></i>
+
+                    <span class="title">手机编号</span>
+
+                    <span th:class="${activeOne == 'iphone' ? 'selected' : ''}"></span>
+
+                    <span th:class="${activeOne == 'iphone' ? 'arrow open' : ''}"></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li th:class="${activeTwo == 'iphonTable' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goSjTaskIphone/0}">
+
+                            手机编号</a>
+
+                    </li>
+                    <li th:class="${activeTwo == 'iphonAdd' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goSjTaskIphoneAdd}">
+
+                            添加编号</a>
+
+                    </li>
+
+                    <li th:class="${activeTwo == 'iphonUpdate' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/goSjTaskIphoneUpdate/0}">
+
+                            修改编号</a>
+
+                    </li>
+
+
+
+
+
+
+                </ul>
+
+            </li>
+
+
+            <li th:class="${activeOne == 'gn' ? 'active' : ''}">
+
+                <a href="javascript:;">
+
+                    <i class="icon-folder-open"></i>
+
+                    <span class="title">功能</span>
+
+                    <span th:class="${activeOne == 'gn' ? 'selected' : ''}"></span>
+
+                    <span th:class="${activeOne == 'gn' ? 'arrow open' : ''}"></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li th:class="${activeTwo == 'ip' ? 'active' : ''}">
+
+                        <a href="javascript:;">
+
+                            <i class="icon-cogs"></i>
+
+                            IP源
+
+                            <span class="arrow"></span>
+
+                        </a>
+
+                        <ul class="sub-menu">
+
+                            <li th:class="${activeThree == 'ipTable' ? 'active' : ''}">
+                                <a href="#" th:href="@{/webAdmin/goIpTable}"><i class="icon-remove"></i> 列表</a></li>
+
+                            <li th:class="${activeThree == 'ipAdd' ? 'active' : ''}"><a href="#" th:href="@{/webAdmin/goIpAdd}"><i class="icon-pencil"></i> 添加</a></li>
+
+                            <li th:class="${activeThree == 'ipUpdate' ? 'active' : ''}"><a href="#"><i class="icon-edit"></i> 修改</a></li>
+
+                        </ul>
+
+                    </li>
+
+                    <li th:class="${activeTwo == 'lua' ? 'active' : ''}">
+
+                        <a href="javascript:;">
+
+                            <i class="icon-globe"></i>
+
+                            lua脚本
+
+                            <span class="arrow"></span>
+
+                        </a>
+
+                        <ul class="sub-menu">
+
+                            <li th:class="${activeThree == 'luaTable' ? 'active' : ''}"><a href="#" th:href="@{/webAdmin/goLuaTable/0}"><i class="icon-remove"></i> 列表</a></li>
+
+                            <li th:class="${activeThree == 'luaAdd' ? 'active' : ''}"><a href="#" th:href="@{/webAdmin/goLuaAdd}"><i class="icon-pencil"></i> 添加</a></li>
+
+                            <li th:class="${activeThree == 'luaUpdate' ? 'active' : ''}"><a href="#" th:href="@{/webAdmin/goLuaUpdate/0}"><i class="icon-edit"></i> 修改</a></li>
+
+<!--                            <li><a href="#"><i class="icon-external-link"></i>  添加</a></li>-->
+
+<!--                            <li><a href="#"><i class="icon-bell"></i>  修改</a></li>-->
+
+                        </ul>
+
+                    </li>
+
+                    <li th:class="${activeTwo == 'file' ? 'active' : ''}">
+
+                        <a href="javascript:;">
+
+                            <i class="icon-globe"></i>
+
+                            文件管理
+
+                            <span class="arrow"></span>
+
+                        </a>
+
+                        <ul class="sub-menu">
+
+                            <li th:class="${activeThree == 'exlFile' ? 'active' : ''}"><a href="#" th:href="@{/webAdmin/goExlUpload}"><i class="icon-remove"></i> exl上传</a></li>
+
+
+                        </ul>
+
+                    </li>
+                    <li th:class="${activeTwo == 'url' ? 'active' : ''}">
+                        <a href="javascript:;">
+                            <i class="icon-globe"></i>
+                            任务请求
+                            <span class="arrow"></span>
+                        </a>
+
+                        <ul class="sub-menu">
+
+                            <li th:class="${activeThree == 'qdUrl' ? 'active' : ''}"><a href="#" th:href="@{/webAdmin/goQdUrl/0}"><i class="icon-remove"></i>URL </a></li>
+
+
+                        </ul>
+                    </li>
+                    <li th:class="${activeTwo == 'live' ? 'active' : ''}">
+                        <a href="javascript:;">
+                            <i class="icon-globe"></i>
+                            手机存活
+                            <span class="arrow"></span>
+                        </a>
+
+                        <ul class="sub-menu">
+
+                            <li th:class="${activeThree == 'iphoneLive' ? 'active' : ''}"><a href="#" th:href="@{/webAdmin/findLiveIphone}"><i class="icon-remove"></i>URL </a></li>
+
+
+                        </ul>
+                    </li>
+                </ul>
+
+            </li>
+
+
+            <li class="" th:class="${activeOne == 'tj' ? 'active' : ''}">
+
+                <a href="javascript:;">
+
+                    <i class="icon-th"></i>
+
+                    <span class="title">报表</span>
+
+                    <span th:class="${activeOne == 'tj' ? 'selected' : ''}"></span>
+
+                    <span th:class="${activeOne == 'tj' ? 'arrow open' : ''}"></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li th:class="${activeTwo == 'totalTask' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/totalTaskMess/0/0}">
+
+                            统计</a>
+
+                    </li>
+
+                    <li th:class="${activeTwo == 'totalTaskM' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/taskTotalM}">
+
+                            跑量效率统计</a>
+
+                    </li>
+                    <li th:class="${activeTwo == 'totalTaskTj' ? 'active' : ''}">
+
+                        <a href="#" th:href="@{/webAdmin/taskTotalTj/0/0/0}">
+
+                            效率统计</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+<!--            <li class="">-->
+
+<!--                <a href="javascript:;">-->
+
+<!--                    <i class="icon-file-text"></i>-->
+
+<!--                    <span class="title">其他</span>-->
+
+<!--                    <span class="arrow "></span>-->
+
+<!--                </a>-->
+
+<!--                <ul class="sub-menu">-->
+
+<!--                    <li >-->
+
+<!--                        <a href="portlet_general.html">-->
+
+<!--                            ip</a>-->
+
+<!--                    </li>-->
+
+<!--                    <li >-->
+
+<!--                        <a href="portlet_draggable.html">-->
+
+<!--                            编号</a>-->
+
+<!--                    </li>-->
+
+<!--                </ul>-->
+
+<!--            </li>-->
+
+
+        </ul>
+
+        <!-- END SIDEBAR MENU -->
+
+    </div>
+
+    <!--主页设置颜色 中引用-->
+    <div id="main_color_common" class="color-panel hidden-phone">
+
+        <div class="color-mode-icons icon-color"></div>
+
+        <div class="color-mode-icons icon-color-close"></div>
+
+        <div class="color-mode">
+
+            <p>切换颜色</p>
+
+            <ul class="inline">
+
+                <li class="color-black current color-default" data-style="default"></li>
+
+                <li class="color-blue" data-style="blue"></li>
+
+                <li class="color-brown" data-style="brown"></li>
+
+                <li class="color-purple" data-style="purple"></li>
+
+                <li class="color-grey" data-style="grey"></li>
+
+                <li class="color-white color-light" data-style="light"></li>
+
+            </ul>
+
+            <label>
+
+                <span>布局</span>
+
+                <select class="layout-option m-wrap small">
+
+                    <option value="fluid" selected>Fluid</option>
+
+                    <option value="boxed">Boxed</option>
+
+                </select>
+
+            </label>
+
+            <label>
+
+                <span>标头</span>
+
+                <select class="header-option m-wrap small">
+
+                    <option value="fixed" selected>Fixed</option>
+
+                    <option value="default">Default</option>
+
+                </select>
+
+            </label>
+
+            <label>
+
+                <span>侧边栏</span>
+
+                <select class="sidebar-option m-wrap small">
+
+                    <option value="fixed">Fixed</option>
+
+                    <option value="default" selected>Default</option>
+
+                </select>
+
+            </label>
+
+            <label>
+
+                <span>页脚</span>
+
+                <select class="footer-option m-wrap small">
+
+                    <option value="fixed">Fixed</option>
+
+                    <option value="default" selected>Default</option>
+
+                </select>
+
+            </label>
+
+        </div>
+
+    </div>
+    <!--底部导航 中引用-->
+    <div id="down_dh_common" class="footer">
+
+        <div class="footer-inner">
+
+            2020 &copy; Metronic by keenthemes.Collect from <a href="http://www.cssmoban.com/" title="网站模板" target="_blank">网站模板</a> - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
+
+        </div>
+
+        <div class="footer-tools">
+
+			<span class="go-top">
+
+			<i class="icon-angle-up"></i>
+
+			</span>
+
+        </div>
+
+    </div>
+    <!--底部js 中引用-->
+    <div id="js_down_common">
+
+        <!-- END FOOTER -->
+
+        <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+        <!-- BEGIN CORE PLUGINS -->
+
+        <script src="media/js/jquery-1.10.1.min.js" th:src="@{/media/js/jquery-1.10.1.min.js}" type="text/javascript"></script>
+
+        <script src="media/js/jquery-migrate-1.2.1.min.js" th:src="@{/media/js/jquery-migrate-1.2.1.min.js}" type="text/javascript"></script>
+
+        <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+        <script src="media/js/jquery-ui-1.10.1.custom.min.js" th:src="@{/media/js/jquery-ui-1.10.1.custom.min.js}" type="text/javascript"></script>
+
+        <script src="media/js/bootstrap.min.js" th:src="@{/media/js/bootstrap.min.js}" type="text/javascript"></script>
+
+        <!--[if lt IE 9]>
+
+        <script src="media/js/excanvas.min.js" th:src="@{/media/js/excanvas.min.js}"></script>
+
+        <script src="media/js/respond.min.js" th:src="@{/media/js/respond.min.js}"></script>
+
+        <![endif]-->
+
+        <script src="media/js/jquery.slimscroll.min.js" th:src="@{/media/js/jquery.slimscroll.min.js}" type="text/javascript"></script>
+
+        <script src="media/js/jquery.blockui.min.js" th:src="@{/media/js/jquery.blockui.min.js}" type="text/javascript"></script>
+
+        <script src="media/js/jquery.cookie.min.js" th:src="@{/media/js/jquery.cookie.min.js}" type="text/javascript"></script>
+
+        <script src="media/js/jquery.uniform.min.js" th:src="@{/media/js/jquery.uniform.min.js}" type="text/javascript" ></script>
+
+
+
+        <!-- END PAGE LEVEL SCRIPTS -->
+    </div>
+    <!--底部From 表单页面引用-->
+    <th:block th:fragment="js_down_common_from">
+
+        <script type="text/javascript" th:src="@{/media/js/ckeditor.js}" src="media/js/ckeditor.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/bootstrap-fileupload.js}" src="media/js/bootstrap-fileupload.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/chosen.jquery.min.js}" src="media/js/chosen.jquery.min.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/select2.min.js}" src="media/js/select2.min.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/wysihtml5-0.3.0.js}" src="media/js/wysihtml5-0.3.0.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/bootstrap-wysihtml5.js}" src="media/js/bootstrap-wysihtml5.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/jquery.tagsinput.min.js}" src="media/js/jquery.tagsinput.min.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/jquery.toggle.buttons.js}" src="media/js/jquery.toggle.buttons.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/bootstrap-datepicker.js}" src="media/js/bootstrap-datepicker.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/bootstrap-datetimepicker.js}" src="media/js/bootstrap-datetimepicker.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/clockface.js}" src="media/js/clockface.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/date.js}" src="media/js/date.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/daterangepicker.js}" src="media/js/daterangepicker.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/bootstrap-colorpicker.js}" src="media/js/bootstrap-colorpicker.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/bootstrap-timepicker.js}" src="media/js/bootstrap-timepicker.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/jquery.inputmask.bundle.min.js}"  src="media/js/jquery.inputmask.bundle.min.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/jquery.input-ip-address-control-1.0.min.js}" src="media/js/jquery.input-ip-address-control-1.0.min.js"></script>
+
+        <script type="text/javascript" th:src="@{/media/js/jquery.multi-select.js}" src="media/js/jquery.multi-select.js"></script>
+
+        <script th:src="@{/media/js/bootstrap-modal.js}" src="media/js/bootstrap-modal.js" type="text/javascript" ></script>
+
+        <script th:src="@{/media/js/bootstrap-modalmanager.js}" src="media/js/bootstrap-modalmanager.js" type="text/javascript" ></script>
+
+    </th:block>
+    <th:block th:fragment="css_top_common_from">
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/bootstrap-fileupload.css}" href="media/css/bootstrap-fileupload.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/jquery.gritter.css}" href="media/css/jquery.gritter.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/chosen.css}"  href="media/css/chosen.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/select2_metro.css}" href="media/css/select2_metro.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/jquery.tagsinput.css}" href="media/css/jquery.tagsinput.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/clockface.css}" href="media/css/clockface.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/bootstrap-wysihtml5.css}" href="media/css/bootstrap-wysihtml5.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/datepicker.css}" href="media/css/datepicker.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/timepicker.css}" href="media/css/timepicker.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/colorpicker.css}" href="media/css/colorpicker.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/bootstrap-toggle-buttons.css}" href="media/css/bootstrap-toggle-buttons.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/daterangepicker.css}" href="media/css/daterangepicker.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/datetimepicker.css}" href="media/css/datetimepicker.css" />
+
+        <link rel="stylesheet" type="text/css" th:href="@{/media/css/multi-select-metro.css}" href="media/css/multi-select-metro.css" />
+
+        <link href="media/css/bootstrap-modal.css" th:href="@{/media/css/bootstrap-modal.css}"  rel="stylesheet" type="text/css"/>
+        <link href="media/css/jquery.fancybox.css" th:href="@{/media/css/jquery.fancybox.css}" rel="stylesheet" />
+        <link href="media/css/jquery.fileupload-ui.css" rel="stylesheet" th:href="@{/media/css/jquery.fileupload-ui.css}"/>
+    </th:block>
+</body>
+</html>
